@@ -20,9 +20,10 @@ import java.util.Scanner;
 class Pogadjanje {
 
     private static Scanner scanner = new Scanner(System.in);
-    private static Random randomNumber = new Random();
 
     public static void main(String[] args) {
+
+        Random randomNumber = new Random();
 
         do {
             //Generise random broj izmedju 1 i 50
