@@ -1,19 +1,18 @@
-/*ZADATAK3: Napisati program koji će predstavljati jednostavan digitron.
-  Program treba da radi tako što korisnik unese dva cela broja, zatim kod operacije
-  koju želi da izvrši (‘s’ – sabiranje, ‘o’ – oduzimanje, ‘m’ – množenje, ‘d’ – deljenje).
-  Kao rezultat se očekuje ispisivanje rezultata te operacije nad unetim operandima.
-  Sve operacije smestiti u posebne metode.
-  Vrteti se u petlji, sve dok se za kod operacije ne unese nepostojeći kod.
- */
-
  package Zadatak3;
+
+/**
+ *   ZADATAK3: Napisati program koji će predstavljati jednostavan digitron.
+ *   Program treba da radi tako što korisnik unese dva cela broja, zatim kod operacije
+ *   koju želi da izvrši (‘s’ – sabiranje, ‘o’ – oduzimanje, ‘m’ – množenje, ‘d’ – deljenje).
+ *   Kao rezultat se očekuje ispisivanje rezultata te operacije nad unetim operandima.
+ *   Sve operacije smestiti u posebne metode.
+ *   Vrteti se u petlji, sve dok se za kod operacije ne unese nepostojeći kod.
+ *
+ * @author Vladimir Krekic
+ */
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
-/**
- * AUTOR: Vladimir Krekic
- */
 
 class Digitron {
 
