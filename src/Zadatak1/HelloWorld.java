@@ -1,12 +1,10 @@
-/*
-  ZADATAK1: Kreirati projekat u razvojnom okruženju (Eclipse, IntelliJ)
-  i napisati program koji u konzoli ispisuje tekst: “Hello World!”.
- */
-
 package Zadatak1;
 
 /**
- * AUTOR: Vladimir Krekic
+ * ZADATAK1: Kreirati projekat u razvojnom okruženju (Eclipse, IntelliJ)
+ *           i napisati program koji u konzoli ispisuje tekst: “Hello World!”.
+ *           
+ * @author Vladimir Krekic
  */
 
 public class HelloWorld {
