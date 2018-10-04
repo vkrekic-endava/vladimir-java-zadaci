@@ -1,101 +1,101 @@
-/*
-  ZADATAK4: Za uneti niz celih brojeva duzine n (koja se takođe unosi),
-  sortirati niz, ispitati da li sadrži broj x i ispisati prvih 5 članova niza
-  na standardni izlaz.
- */
-
-
 package Zadatak4;
+
+/**
+ *   ZADATAK4: Za uneti niz celih brojeva duzine n>=5 (koja se takođe unosi),
+ *   sortirati niz, ispitati da li sadrži broj x i ispisati prvih 5 članova niza
+ *   na standardni izlaz.
+ *
+ * @author Vladimir Krekic
+ */
 
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-/**
- * AUTOR: Vladimir Krekic
- */
-
 class Niz {
 
-    private static int duzinaNiza;
     private static Scanner scanner = new Scanner(System.in);
-    private static int trazeniBroj;
+    private static final String ZA_DUZINU_NIZA = "Unesite duzinu niza (ceo broj veci od 4): ";
+    private static final String ZA_POGADJANJE = "Unesite broj za pretragu (ceo broj): ";
+    private static final String NIJE_CEO_BROJ = "Niste uneli ceo broj!\nMolim Vas pokusajte ponovo.";
+    private static final String NIJE_VECI_OD_4 = "Niste uneli ceo broj veci od 4!\nMolim Vas pokusajte ponovo.";
 
     public static void main(String[] args) {
 
-        //Unosi duzinu niza i ponavlja dok god korisnik ne unese integer
-        boolean uslov = false;
+        int duzinaNiza = unosBroja(ZA_DUZINU_NIZA);
+
+        int[] niz = unosElemenataNiza(duzinaNiza);
+
+        int trazeniBroj = unosBroja(ZA_POGADJANJE);
+
+        Arrays.sort(niz);
+
+         //Poziva metod provera() i formira poruku na osnovu resenja metoda
+        StringBuilder poruka = new StringBuilder("Broj ");
+        poruka = (pronadji(niz, trazeniBroj))?
+                poruka.append(trazeniBroj).append(" je clan niza")
+                : poruka.append(trazeniBroj).append(" nije clan niza");
+        System.out.println(poruka);
+
+        System.out.println("Stampanje prvih pet clanova sortiranog niza");
+        stampanje(niz);
+
+        scanner.close();
+    }
+
+    //Unosi duzinu niza ili broj za retragu, zavisno od stringa
+    private static int unosBroja(String poruka){
+        String porukaGreske;
+        if(poruka.equals(ZA_DUZINU_NIZA)) {
+            porukaGreske = NIJE_VECI_OD_4;
+        }else
+            porukaGreske = NIJE_CEO_BROJ;
+        int brojKojiSeUnosi;
         do {
-            System.out.print("Unesite duzinu niza: ");
+            System.out.println(poruka);
             try {
-                duzinaNiza = scanner.nextInt();
-                uslov = true;
+                brojKojiSeUnosi = scanner.nextInt();
+                if(poruka.equals(ZA_DUZINU_NIZA) && (brojKojiSeUnosi < 5)){
+                    System.out.println(porukaGreske);
+                }else
+                    break;
             }catch (InputMismatchException e){
-                System.out.println("Niste uneli broj!");
+                System.out.println(NIJE_CEO_BROJ);
                 scanner.nextLine();
             }
-        }while (!uslov);
+        }while (true);
+        return brojKojiSeUnosi;
+    }
 
+    //Unosi elemente niza i ponavlja samo za one koji ne budu ispravno uneti
+    private static int[] unosElemenataNiza(int duzinaNiza){
         int[] niz = new int[duzinaNiza];
-
-        //Unosi clanove niza i ponavlja samo za one koji ne budu isptavno ineti
-        for(int brojac1=0; brojac1<duzinaNiza; ){
-            System.out.print("Unesite " + (brojac1+1) + ". clan niza (samo cele brojeve): ");
+        for(int brojac=0; brojac<duzinaNiza; ){
+            System.out.printf("Unesite %d. clan niza (samo cele brojeve): \n", (brojac+1));
             try {
-                niz[brojac1] = scanner.nextInt();
-                brojac1++;
+                niz[brojac] = scanner.nextInt();
+                brojac++;
             }catch (InputMismatchException e){
-                System.out.println("Niste uneli celobrojnu vrednost!");
+                System.out.println(NIJE_CEO_BROJ);
                 scanner.nextLine();
             }
         }
+        return niz;
+    }
 
-        //Unosi broj za pretragu i ponavlja sve dok ne bude unet integer
-        uslov = false;
-        do {
-            System.out.print("Unesite broj za pretragu (ceo broj): ");
-            try {
-                trazeniBroj = scanner.nextInt();
-                uslov = true;
-            }catch (InputMismatchException e){
-                System.out.println("Niste uneli celobrojnu vrednost!");
-            }
-        }while (!uslov);
-
-        //Efikasnije sortiranje od mog koda
-        Arrays.sort(niz);
-
-        //Moj kod za BoubleSort
-//        for (int brojac1 = 0; brojac1 < duzinaNiza - 1; brojac1++) {
-//            for(int brojac2 = 0; brojac2 < duzinaNiza-1-brojac1; brojac2++){
-//                if (niz[brojac2] > niz[brojac2 + 1]) {
-//                    int temp = niz[brojac2];
-//                    niz[brojac2] = niz[brojac2 + 1];
-//                    niz[brojac2 + 1] = temp;
-//                }
-//            }
-//        }
-
-        //Poziva metod provera() i formira poruku na osnovu resenja metoda
-        String poruka = (pronadji(niz, trazeniBroj))? "Broj " + trazeniBroj + " je clan niza" : "Broj " + trazeniBroj + " nije clan niza";
-        System.out.println(poruka);
-
-        //Ako je niz duzi od 5 clanova, stampa samo prvih 5
-        int lngNiza = (duzinaNiza>5)? 5: duzinaNiza;
-        for(int i=0; i<lngNiza; i++){
-            System.out.println((i+1) + ". clan niza je " + niz[i]);
+    //Stampa niz
+    private static void stampanje(int[] niz){
+        for(int brojac=0; brojac<5; brojac++){
+            System.out.printf("%d. clan niza je %d\n",(brojac+1), niz[brojac]);
         }
     }
 
     //Pretrazuje niz
     private static boolean pronadji(int[] niz, int trazeniBroj) {
-        for (int i = 0; i < duzinaNiza; i++) {
+        for (int i = 0; i < niz.length; i++) {
             if (niz[i] == trazeniBroj)
                 return true;
         }
         return false;
     }
-
 }
-
-
