@@ -35,7 +35,7 @@ class Niz {
         poruka = (pronadji(niz, trazeniBroj))?
                 poruka.append(trazeniBroj).append(" je clan niza")
                 : poruka.append(trazeniBroj).append(" nije clan niza");
-        System.out.println(poruka);
+        System.out.println(poruka.toString());
 
         System.out.println("Stampanje prvih pet clanova sortiranog niza");
         stampanje(niz);
@@ -45,11 +45,7 @@ class Niz {
 
     //Unosi duzinu niza ili broj za retragu, zavisno od stringa
     private static int unosBroja(String poruka){
-        String porukaGreske;
-        if(poruka.equals(ZA_DUZINU_NIZA)) {
-            porukaGreske = NIJE_VECI_OD_4;
-        }else
-            porukaGreske = NIJE_CEO_BROJ;
+        String porukaGreske = odredjivanjePorukeGreske(poruka);
         int brojKojiSeUnosi;
         do {
             System.out.println(poruka);
@@ -67,11 +63,20 @@ class Niz {
         return brojKojiSeUnosi;
     }
 
+    private static String odredjivanjePorukeGreske (String poruka){
+        String porukaGreske;
+        if(poruka.equals(ZA_DUZINU_NIZA)) {
+            porukaGreske = NIJE_VECI_OD_4;
+        }else
+            porukaGreske = NIJE_CEO_BROJ;
+        return porukaGreske;
+    }
+
     //Unosi elemente niza i ponavlja samo za one koji ne budu ispravno uneti
     private static int[] unosElemenataNiza(int duzinaNiza){
         int[] niz = new int[duzinaNiza];
         for(int brojac=0; brojac<duzinaNiza; ){
-            System.out.printf("Unesite %d. clan niza (samo cele brojeve): \n", (brojac+1));
+            System.out.printf("Unesite %d. clan niza (samo cele brojeve): %n", (brojac+1));
             try {
                 niz[brojac] = scanner.nextInt();
                 brojac++;
@@ -86,7 +91,7 @@ class Niz {
     //Stampa niz
     private static void stampanje(int[] niz){
         for(int brojac=0; brojac<5; brojac++){
-            System.out.printf("%d. clan niza je %d\n",(brojac+1), niz[brojac]);
+            System.out.printf("%d. clan niza je %d%n",(brojac+1), niz[brojac]);
         }
     }
 
