@@ -39,7 +39,7 @@ abstract class GeometrijskaSlika {
     @Override
     public String toString() {
         return String.format
-                ("%s\n*****************\nObim: %.4f\nPovrsina: %.4f\n*****************\n",
+                ("%s%n*****************%nObim: %.4f%nPovrsina: %.4f%n*****************%n",
                         NAZIV, getObim(), getPovrsina());
     }
 }

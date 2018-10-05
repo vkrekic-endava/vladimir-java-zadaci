@@ -37,7 +37,6 @@ class NejednakostranicniTrougao extends Trougao{
         this.stranica3 = stranica3;
     }
 
-    //napisati kod
     public double visina(){
         double sum = getStranica()+getStranica2()+getStranica3();
         return (2/getStranica())*Math.sqrt(sum*(sum-getStranica())*(sum-getStranica2())*(sum-getStranica3()));
@@ -56,7 +55,7 @@ class NejednakostranicniTrougao extends Trougao{
     @Override
     public String toString() {
         return String.format
-                ("%s\n*****************\nObim: %.4f\nPovrsina: %.4f\n*****************\n",
+                ("%s%n*****************%nObim: %.4f%nPovrsina: %.4f%n*****************%n",
                         NAZIV, obim(), povrsina());
     }
 }
