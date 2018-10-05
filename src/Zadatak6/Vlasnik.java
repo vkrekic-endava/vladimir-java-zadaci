@@ -1,5 +1,8 @@
 package Zadatak6;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * Zadatak 6
  *
@@ -8,6 +11,7 @@ package Zadatak6;
 
 class Vlasnik {
 
+    private static final Pattern pattern = Pattern.compile("[0-9]");
     private String imeVlasnika;
     private String prezimeVlasnika;
     private final String JMBG;
@@ -16,7 +20,9 @@ class Vlasnik {
     public Vlasnik(String imeVlasnika, String prezimeVlasnika, String JMBG, String brojLicneKarte) {
         this.imeVlasnika = imeVlasnika;
         this.prezimeVlasnika = prezimeVlasnika;
-        this.JMBG = JMBG;
+        if(checkJMBG(JMBG)){
+            this.JMBG = JMBG;
+        }else this.JMBG = "Pogresan maticni broj";
         this.brojLicneKarte = brojLicneKarte;
     }
 
@@ -38,6 +44,13 @@ class Vlasnik {
 
     public String getJMBG() {
         return JMBG;
+    }
+
+    private boolean checkJMBG(String JMBG){
+        Matcher matcher = pattern.matcher(JMBG);
+        if(matcher.matches() && JMBG.length()==13)
+            return true;
+        return false;
     }
 
     public String getBrojLicneKarte() {
