@@ -29,7 +29,9 @@ class Pogadjanje {
             //Generise random broj izmedju 1 i 50
             int pogodi = randomNumber.nextInt(50) + 1;
 
-            while (true) {
+            boolean pogodak = false;
+
+            while (!pogodak) {
 
                 //Poziva metod za unos i proveru broja
                 int broj = unos();
@@ -39,10 +41,10 @@ class Pogadjanje {
 
                 if (rezultat == 0) {
                     System.out.println("Pogodili ste");
-                        break;
+                    pogodak = true;
                 } else if (rezultat == 1) {
                     System.out.println("Blizu ste");
-                        break;
+                    pogodak = true;
                 } else System.out.println("Niste pogodili. Pokusajte ponovo.");
             }
 
@@ -58,7 +60,7 @@ class Pogadjanje {
         int broj = 0;
         //Ponavlja unos sve dok ne bude unet ceo broj izmedju 1 i 50
         while (ispravno){
-            System.out.print("Upisi broj izmedju 1 i 50: ");
+            System.out.println("Upisi broj izmedju 1 i 50: ");
             try {
                 broj = scanner.nextInt();
                 if(broj > 50 || broj < 1){
