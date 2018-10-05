@@ -27,23 +27,22 @@ class Digitron {
             long broj1 = unosBroja("prvi");
             long broj2 = unosBroja("drugi");
 
-            //Biranje operacije
-            System.out.println("Izaberite operaciju\n‘s’ – sabiranje,\n" +
-                    "‘o’ – oduzimanje,\n‘m’ – množenje,\n‘d’ – deljenje\n" +
+            System.out.println("Izaberite operaciju%n‘s’ – sabiranje,%n" +
+                    "‘o’ – oduzimanje,%n‘m’ – množenje,%n‘d’ – deljenje%n" +
                     "ostali karakteri za izlaz");
             String izbor = scanner.next();
 
             switch (izbor) {
                 case "s":
-                    System.out.printf("Rezultat sabiranja brojeva %d i %d je %d\n", broj1, broj2, sabiranje(broj1, broj2));
+                    System.out.printf("Rezultat sabiranja brojeva %d i %d je %d%n", broj1, broj2, sabiranje(broj1, broj2));
                     petlja = ponovo();
                     break;
                 case "o":
-                    System.out.printf("Rezultat oduzimanja brojeva %d i %d je %d\n", broj1, broj2, oduzimanje(broj1, broj2));
+                    System.out.printf("Rezultat oduzimanja brojeva %d i %d je %d%n", broj1, broj2, oduzimanje(broj1, broj2));
                     petlja = ponovo();
                     break;
                 case "m":
-                    System.out.printf("Rezultat mnozenja brojeva %d i %d je %d\n", broj1, broj2, mnozenje(broj1, broj2));
+                    System.out.printf("Rezultat mnozenja brojeva %d i %d je %d%n", broj1, broj2, mnozenje(broj1, broj2));
                     petlja = ponovo();
                     break;
                 case "d":
@@ -52,7 +51,7 @@ class Digitron {
                         petlja = ponovo();
                         break;
                     }else {
-                        System.out.printf("Rezultat deljenja brojeva %d i %d je %f\n", broj1, broj2, deljenje(broj1, broj2));
+                        System.out.printf("Rezultat deljenja brojeva %d i %d je %f%n", broj1, broj2, deljenje(broj1, broj2));
                         petlja = ponovo();
                         break;
                     }
@@ -81,27 +80,33 @@ class Digitron {
             return (double) br1/br2;
     }
 
-    //Unos i provera brojeva
-    private static long unosBroja(String str){
-        long broj = 0;
+    /**
+     * Unos i provera ispravnosti unetih parametara
+     * @param redosled redosled brojeva (prvi, drugi)
+     * @return vraca uneti broj u long formatu
+     */
+    private static long unosBroja(String redosled){
+        long broj;
         do {
-            System.out.print("Unesite " + str + " ceo broj: ");
+            System.out.println("Unesite " + redosled + " ceo broj: ");
             try {
                 broj = scanner.nextLong();
                 break;
             } catch (InputMismatchException e) {
-                System.out.println("Niste uneli ceo broj!\nMolim Vas pokusajte ponovo");
-                //nextLine proguta Enter
+                System.out.println("Niste uneli ceo broj!%nMolim Vas pokusajte ponovo");
                 scanner.nextLine();
             }
         }while(true);
         return broj;
     }
 
-    //Pita korisnika da li zeli ponovo da racuna
-    //Ako izabere "d" racuna ponovo, svi ostali izbori su Ne
+    /**
+     * Pita korisnika da li zeli ponovo da racuna
+     * Ako izabere "d" racuna ponovo, svi ostali izbori su Ne
+     * @return vraca true ili false
+     */
     private static boolean ponovo(){
-        System.out.println("\nZelite li ponovo da racunate\n d za DA, ostali karakteri za izlaz");
+        System.out.println("%nZelite li ponovo da racunate%n d za DA, ostali karakteri za izlaz");
         String izbor = scanner.next();
         return izbor.equalsIgnoreCase("d");
     }
