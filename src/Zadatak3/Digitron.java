@@ -20,7 +20,7 @@ class Digitron {
 
     public static void main(String[] args) {
 
-        boolean petlja = true;
+        boolean petlja;
 
         do {
 
