@@ -18,23 +18,23 @@ package Zadatak5;
 class GeometrijskiOblici {
 
     public static void main(String[] args) {
-        GeometrijskaSlika kr = new Krug(5);
-        System.out.println(kr);
+        GeometrijskaSlika krug = new Krug(5);
+        System.out.println(krug);
 
-        GeometrijskaSlika el = new Elipsa(4, 7);
-        System.out.println(el);
+        GeometrijskaSlika elipsa = new Elipsa(4, 7);
+        System.out.println(elipsa);
 
-        GeometrijskaSlika tr = new Trougao(6);
-        System.out.println(tr);
+        GeometrijskaSlika trougao = new Trougao(6);
+        System.out.println(trougao);
 
-        GeometrijskaSlika ntr = new NejednakostranicniTrougao(11, 7, 5);
-        System.out.println(ntr);
+        GeometrijskaSlika nejednakostranicniTrougao = new NejednakostranicniTrougao(11, 7, 5);
+        System.out.println(nejednakostranicniTrougao);
 
-        GeometrijskaSlika kv = new Kvadrat(10);
-        System.out.println(kv);
+        GeometrijskaSlika kvadrat = new Kvadrat(10);
+        System.out.println(kvadrat);
 
-        GeometrijskaSlika pr = new Pravougaonik(11, 7);
-        System.out.println(pr);
+        GeometrijskaSlika pravougaonik = new Pravougaonik(11, 7);
+        System.out.println(pravougaonik);
     }
 
 
