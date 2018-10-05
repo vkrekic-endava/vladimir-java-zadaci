@@ -25,10 +25,14 @@ class Main {
         Vlasnik prvi = new Vlasnik("Pera", "Peric", "0101970710589", "0056897");
         Vlasnik drugi = new Vlasnik("Mara", "Maric", "0202958746589", "000225");
 
-        Nekretnina stan = new Stan("Prva ulica 1", Zona.ZONA1, 89, prvi, 9, 8);
-        Nekretnina kuca = new Kuca("Drugi bulevar 44", Zona.ZONA3, 157, drugi, 150);
+        Nekretnina stan1 = new Stan("Prva ulica 1", Zona.ZONA1, 89, prvi, 9, 8);
+        Nekretnina kuca1 = new Kuca("Drugi bulevar 44", Zona.ZONA3, 157, drugi, 150);
+        Nekretnina stan2 = new Stan("Prva ulica 1", Zona.ZONA2, 89, prvi, 9, 8);
+        Nekretnina kuca2 = new Kuca("Drugi bulevar 44", Zona.ZONA4, 157, drugi, 150);
 
-        System.out.println(stan);
-        System.out.println(kuca);
+        System.out.println(stan1);
+        System.out.println(kuca1);
+        System.out.println(stan2);
+        System.out.println(kuca2);
     }
 }
