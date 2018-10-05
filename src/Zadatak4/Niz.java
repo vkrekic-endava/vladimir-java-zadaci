@@ -30,12 +30,7 @@ class Niz {
 
         Arrays.sort(niz);
 
-         //Poziva metod provera() i formira poruku na osnovu resenja metoda
-        StringBuilder poruka = new StringBuilder("Broj ");
-        poruka = (pronadji(niz, trazeniBroj))?
-                poruka.append(trazeniBroj).append(" je clan niza")
-                : poruka.append(trazeniBroj).append(" nije clan niza");
-        System.out.println(poruka.toString());
+        System.out.println(poruka(pronadji(niz, trazeniBroj), trazeniBroj));
 
         System.out.println("Stampanje prvih pet clanova sortiranog niza");
         stampanje(niz);
@@ -43,7 +38,12 @@ class Niz {
         scanner.close();
     }
 
-    //Unosi duzinu niza ili broj za retragu, zavisno od stringa
+    /**
+     * Unosi duzinu niza ili broj za retragu, zavisno od stringa
+     * @param poruka = String konstanta koja govori da li unosimo duzinu niza (uslov >= 5) ili broj za pretragu
+     * @return broj koji smo uneli ako ispunjava uslov
+     */
+
     private static int unosBroja(String poruka){
         String porukaGreske = odredjivanjePorukeGreske(poruka);
         int brojKojiSeUnosi;
@@ -63,6 +63,11 @@ class Niz {
         return brojKojiSeUnosi;
     }
 
+    /**
+     * Generise poruku o gresci za metod unosBroja(String poruka)
+     * @param poruka = String konstanta koja govori da li unosimo duzinu niza (uslov >= 5) ili broj za pretragu
+     * @return String koji se odnosi na greske kod unosa broja
+     */
     private static String odredjivanjePorukeGreske (String poruka){
         String porukaGreske;
         if(poruka.equals(ZA_DUZINU_NIZA)) {
@@ -72,7 +77,11 @@ class Niz {
         return porukaGreske;
     }
 
-    //Unosi elemente niza i ponavlja samo za one koji ne budu ispravno uneti
+    /**
+     * Unosi elemente niza i ponavlja samo za one elemente koji ne budu ispravno uneti
+     * @param duzinaNiza = duzina niza koji se generise
+     * @return int[] niz
+     */
     private static int[] unosElemenataNiza(int duzinaNiza){
         int[] niz = new int[duzinaNiza];
         for(int brojac=0; brojac<duzinaNiza; ){
@@ -88,19 +97,41 @@ class Niz {
         return niz;
     }
 
-    //Stampa niz
+    /**
+     * Stampa niz
+     * @param niz = niz integera koji se stampa
+     */
     private static void stampanje(int[] niz){
         for(int brojac=0; brojac<5; brojac++){
             System.out.printf("%d. clan niza je %d%n",(brojac+1), niz[brojac]);
         }
     }
 
-    //Pretrazuje niz
+    /**
+     * Pretrazuje niz za zadati broj
+     * @param niz = niz integera koji se pretrazuje
+     * @param trazeniBroj = broj koji se uporedjuje sa elementima niza
+     * @return true ili false
+     */
     private static boolean pronadji(int[] niz, int trazeniBroj) {
-        for (int i = 0; i < niz.length; i++) {
-            if (niz[i] == trazeniBroj)
+        for (int elementNiza : niz) {
+            if (elementNiza == trazeniBroj)
                 return true;
         }
         return false;
+    }
+
+    /**
+     * Generise String poruke koja se ispisuje u zavisnosti od rezultata metoda pronadji(int[] niz, int trazeniBroj)
+     * @param rezultatPretrage = boolean rezultat metoda pronadji(int[] niz, int trazeniBroj)
+     * @param trazeniBroj = broj koji je korisnik uneo kao parametar za pretragu
+     * @return String poruke koja se ispisuje
+     */
+    private static String poruka (boolean rezultatPretrage, int trazeniBroj){
+        StringBuilder poruka = new StringBuilder("Broj ");
+        poruka = (rezultatPretrage)?
+                poruka.append(trazeniBroj).append(" je clan niza")
+                : poruka.append(trazeniBroj).append(" nije clan niza");
+        return poruka.toString();
     }
 }
