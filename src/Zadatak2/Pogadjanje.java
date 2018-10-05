@@ -26,17 +26,14 @@ class Pogadjanje {
         Random randomNumber = new Random();
 
         do {
-            //Generise random broj izmedju 1 i 50
             int pogodi = randomNumber.nextInt(50) + 1;
 
             boolean pogodak = false;
 
             while (!pogodak) {
 
-                //Poziva metod za unos i proveru broja
                 int broj = unos();
 
-                //Proverava rezultat i pruza opcije korisniku u skladu sa rezultatom
                 int rezultat = provera(pogodi, broj);
 
                 if (rezultat == 0) {
@@ -54,11 +51,13 @@ class Pogadjanje {
 
     }
 
-    //Unos broja i provera ispravnosti
+    /**
+     * Unos broja i provera ispravnosti
+     * @return ceo broj ako je izmedju 1 i 50
+     */
     private static int unos(){
         boolean ispravno = true;
         int broj = 0;
-        //Ponavlja unos sve dok ne bude unet ceo broj izmedju 1 i 50
         while (ispravno){
             System.out.println("Upisi broj izmedju 1 i 50: ");
             try {
@@ -69,7 +68,6 @@ class Pogadjanje {
                 }
             }catch (InputMismatchException e){
                 System.out.println("Niste uneli broj.\nPokusajte ponovo.");
-                //scanner.nextLine() proguta "Enter". Bez toga udje u beskonacnu petlju.
                 scanner.nextLine();
                 continue;
             }
@@ -78,7 +76,12 @@ class Pogadjanje {
         return broj;
     }
 
-    //Proverava preciznost
+    /**
+     * Provera preciznosti pogadjanja
+     * @return 0 ako je tacan pogodak, 1 ako je razlika manja ili jednaka 5 i 2 ako nije ispunjen ni jedan od gornjih uslova
+     * @param rndNumber = slucajno generisan ceo broj izmedju 1 i 50
+     * @param broj = ceo broj izmedju 1 i 50 koga unosi korisnik radi poredjenja
+     */
     private static int provera(int rndNumber, int broj){
         if(rndNumber==broj)
             return 0;
@@ -87,8 +90,10 @@ class Pogadjanje {
         return 2;
     }
 
-    //Pita korisnika da li zeli da ponovo igra
-    //"d" ga vraca u igru, ostale opcije prekidaju program
+    /**
+     * Pita korisnika da li zeli da ponovo igra
+     * @return true za "d" i false za sve ostale karaktere
+     */
     private static boolean ponovo(){
         System.out.println("Zelite li da igrate ponovo (d/n)");
         String izbor = scanner.next();
