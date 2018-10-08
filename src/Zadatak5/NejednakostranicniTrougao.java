@@ -8,48 +8,73 @@ package Zadatak5;
 
 class NejednakostranicniTrougao extends Trougao{
 
-    private double stranica2;
-    private double stranica3;
+    private double stranicaB;
+    private double stranicaC;
     private static final String NAZIV = "Nejednakostranicni trougao";
 
     public NejednakostranicniTrougao() {
     }
 
-    public NejednakostranicniTrougao(double stranica, double stranica2, double stranica3) {
-        super(stranica);
-        this.stranica2 = stranica2;
-        this.stranica3 = stranica3;
+    public NejednakostranicniTrougao(double stranicaA, double stranicaB, double stranicaC) {
+        super(stranicaA);
+        if(uslov(stranicaA, stranicaB, stranicaC)){
+            this.stranicaB = stranicaB;
+            this.stranicaC = stranicaC;
+        }else{
+            System.out.println("Neispravni parametri. Zbir duzina bilo koje dve stranice mora biti veci od duzine trece stranice.");
+            this.stranicaB = -1;
+            this.stranicaC = -1;
+        }
+
+
     }
 
-    public double getStranica2() {
-        return stranica2;
+    /**
+     * Uslov za nejednakostranicni trougao:
+     * Zbir duzina bilo koje dve stranice je veci od duzine trece stranice
+     * @param stranicaA double
+     * @param stranicaB double
+     * @param stranicaC double
+     * @return boolean true/false
+     */
+    private boolean uslov(double stranicaA, double stranicaB, double stranicaC){
+        return (stranicaA+stranicaB>stranicaC) && (stranicaA+stranicaC>stranicaB) && (stranicaB+stranicaC>stranicaA);
     }
 
-    public void setStranica2(double stranica2) {
-        this.stranica2 = stranica2;
+    public double getStranicaB() {
+        return stranicaB;
     }
 
-    public double getStranica3() {
-        return stranica3;
+    public void setStranicaB(double stranicaB) {
+        this.stranicaB = stranicaB;
     }
 
-    public void setStranica3(double stranica3) {
-        this.stranica3 = stranica3;
+    public double getStranicaC() {
+        return stranicaC;
     }
 
-    public double visina(){
-        double sum = getStranica()+getStranica2()+getStranica3();
-        return (2/getStranica())*Math.sqrt(sum*(sum-getStranica())*(sum-getStranica2())*(sum-getStranica3()));
+    public void setStranicaC(double stranicaC) {
+        this.stranicaC = stranicaC;
     }
 
     @Override
     public double obim() {
-        return getStranica()+getStranica2()+getStranica3();
+        if(stranicaB<0)
+            return -1;
+        return getStranica()+ getStranicaB()+ getStranicaC();
     }
 
+    /**
+     * Povrsina trougla se racuna po Heronovoj formuli:
+     * P = sqrt(s*(s-a)*(s-b)*(s-c)) gde je s=(a+b+c)/2
+     * @return double vrednost za povrsinu ili -1 za pogresno unete parametre u konstruktoru
+     */
     @Override
     public double povrsina() {
-        return getStranica()*visina()/2;
+        if(stranicaB<0)
+            return -1;
+        double poluObim = obim()/2;
+        return Math.sqrt(poluObim*(poluObim-getStranica())*(poluObim-getStranicaB())*(poluObim-getStranicaC()));
     }
 
     @Override

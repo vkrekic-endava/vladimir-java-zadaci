@@ -8,23 +8,23 @@ package Zadatak5;
 
 class Elipsa extends Krug{
 
-    private double poluprecnik2;
+    private double poluprecnikB;
     private static final String NAZIV = "Elipsa";
 
     public Elipsa() {
     }
 
-    public Elipsa(double poluprecnik, double poluprecnik2) {
-        super(poluprecnik);
-        this.poluprecnik2 = poluprecnik2;
+    public Elipsa(double poluprecnikA, double poluprecnikB) {
+        super(poluprecnikA);
+        this.poluprecnikB = poluprecnikB;
     }
 
-    public double getPoluprecnik2() {
-        return poluprecnik2;
+    public double getPoluprecnikB() {
+        return poluprecnikB;
     }
 
-    public void setPoluprecnik2(double poluprecnik2) {
-        this.poluprecnik2 = poluprecnik2;
+    public void setPoluprecnikB(double poluprecnikB) {
+        this.poluprecnikB = poluprecnikB;
     }
 
     @Override
@@ -34,7 +34,7 @@ class Elipsa extends Krug{
 
     @Override
     public double povrsina() {
-        return getPoluprecnik()*getPoluprecnik2()*Math.PI;
+        return getPoluprecnik()* getPoluprecnikB()*Math.PI;
     }
 
     @Override

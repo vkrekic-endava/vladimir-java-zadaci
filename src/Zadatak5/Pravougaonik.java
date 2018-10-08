@@ -8,33 +8,33 @@ package Zadatak5;
 
 class Pravougaonik extends Kvadrat{
 
-    private double drugaStranica;
+    private double stranicaB;
     private static final String NAZIV = "Pravougaonik";
 
     public Pravougaonik() {
     }
 
-    public Pravougaonik(double stranica, double drugaStranica) {
-        super(stranica);
-        this.drugaStranica = drugaStranica;
+    public Pravougaonik(double stranicaA, double stranicaB) {
+        super(stranicaA);
+        this.stranicaB = stranicaB;
     }
 
-    public double getDrugaStranica() {
-        return drugaStranica;
+    public double getStranicaB() {
+        return stranicaB;
     }
 
-    public void setDrugaStranica(double drugaStranica) {
-        this.drugaStranica = drugaStranica;
+    public void setStranicaB(double stranicaB) {
+        this.stranicaB = stranicaB;
     }
 
     @Override
     public double obim() {
-        return 2*getDrugaStranica()+2*getStranica();
+        return 2* getStranicaB()+2*getStranica();
     }
 
     @Override
     public double povrsina() {
-        return getDrugaStranica()*getStranica();
+        return getStranicaB()*getStranica();
     }
 
     @Override

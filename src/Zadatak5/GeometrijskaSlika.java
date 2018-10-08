@@ -12,15 +12,10 @@ abstract class GeometrijskaSlika {
     private double povrsina;
     private static final String NAZIV = "Geometrijska slika";
 
-    public GeometrijskaSlika() {
+    protected GeometrijskaSlika() {
     }
 
-    public GeometrijskaSlika(double obim) {
-        this.obim = obim;
-        this.povrsina = 1;
-    }
-
-    public GeometrijskaSlika(double obim, double povrsina) {
+    protected GeometrijskaSlika(double obim, double povrsina) {
         this.obim = obim;
         this.povrsina = povrsina;
     }

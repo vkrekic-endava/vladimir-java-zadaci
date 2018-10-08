@@ -27,8 +27,11 @@ class GeometrijskiOblici {
         GeometrijskaSlika trougao = new Trougao(6);
         System.out.println(trougao);
 
-        GeometrijskaSlika nejednakostranicniTrougao = new NejednakostranicniTrougao(11, 7, 5);
+        GeometrijskaSlika nejednakostranicniTrougao = new NejednakostranicniTrougao(11, 7, 55);
         System.out.println(nejednakostranicniTrougao);
+
+        GeometrijskaSlika nejednakostranicniTrougao2 = new NejednakostranicniTrougao(11,8,5);
+        System.out.println(nejednakostranicniTrougao2);
 
         GeometrijskaSlika kvadrat = new Kvadrat(10);
         System.out.println(kvadrat);
