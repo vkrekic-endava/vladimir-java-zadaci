@@ -40,44 +40,16 @@ class Stan extends Nekretnina{
         this.povrsinaTerase = povrsinaTerase;
     }
 
+    @Override
     public double getCena() {
         return this.cena;
     }
 
+    @Override
     public double setCena() {
         this.cena = getKvadratura() * getZona().getCenaZaZonu()
                 + ((getPovrsinaPodruma() + getPovrsinaTerase()) * getZona().getCenaZaZonu() * 0.33);
         return this.cena;
-    }
-
-    @Override
-    public String getAdresa() {
-        return adresa;
-    }
-
-    @Override
-    public void setAdresa(String adresa) {
-        this.adresa = adresa;
-    }
-
-    @Override
-    public double getKvadratura() {
-        return kvadratura;
-    }
-
-    @Override
-    public void setKvadratura(double kvadratura) {
-        this.kvadratura = kvadratura;
-    }
-
-    @Override
-    public Vlasnik getVlasnik() {
-        return vlasnik;
-    }
-
-    @Override
-    public void setVlasnik(Vlasnik vlasnik) {
-        this.vlasnik = vlasnik;
     }
 
     @Override

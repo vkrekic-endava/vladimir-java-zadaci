@@ -30,44 +30,16 @@ class Kuca extends Nekretnina{
         this.povrsinaOkucnice = povrsinaOkucnice;
     }
 
+    @Override
     public double getCena() {
         return this.cena;
     }
 
+    @Override
     public double setCena() {
         this.cena = getKvadratura() * getZona().getCenaZaZonu()
                     + getPovrsinaOkucnice() * getZona().getCenaZaZonu() * 0.15;
         return this.cena;
-    }
-
-    @Override
-    public String getAdresa() {
-        return adresa;
-    }
-
-    @Override
-    public void setAdresa(String adresa) {
-        this.adresa = adresa;
-    }
-
-    @Override
-    public double getKvadratura() {
-        return kvadratura;
-    }
-
-    @Override
-    public void setKvadratura(double kvadratura) {
-        this.kvadratura = kvadratura;
-    }
-
-    @Override
-    public Vlasnik getVlasnik() {
-        return vlasnik;
-    }
-
-    @Override
-    public void setVlasnik(Vlasnik vlasnik) {
-        this.vlasnik = vlasnik;
     }
 
     @Override

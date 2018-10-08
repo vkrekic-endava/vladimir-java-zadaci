@@ -8,24 +8,44 @@ package Zadatak6;
 
 abstract class Nekretnina {
 
-    public String adresa;
-    public Zona zona;
-    public double kvadratura;
-    public Vlasnik vlasnik;
+    private String adresa;
+    private Zona zona;
+    private double kvadratura;
+    private Vlasnik vlasnik;
 
-    public Nekretnina(String adresa, Zona zona, double kvadratura, Vlasnik vlasnik) {
+    protected Nekretnina(String adresa, Zona zona, double kvadratura, Vlasnik vlasnik) {
         this.adresa = adresa;
         this.zona = zona;
         this.kvadratura = kvadratura;
         this.vlasnik = vlasnik;
     }
 
-    public abstract String getAdresa();
-    public abstract void setAdresa(String adresa);
-    public abstract double getKvadratura();
-    public abstract void setKvadratura(double kvadratura);
-    public abstract Vlasnik getVlasnik();
-    public abstract void setVlasnik(Vlasnik vlasnik);
+    public abstract double setCena();
+    public abstract double getCena();
+
+    public String getAdresa() {
+        return adresa;
+    }
+
+    public void setAdresa(String adresa) {
+        this.adresa = adresa;
+    }
+
+    public double getKvadratura() {
+        return kvadratura;
+    }
+
+    public void setKvadratura(double kvadratura) {
+        this.kvadratura = kvadratura;
+    }
+
+    public Vlasnik getVlasnik() {
+        return vlasnik;
+    }
+
+    public void setVlasnik(Vlasnik vlasnik) {
+        this.vlasnik = vlasnik;
+    }
 
     public Zona getZona() {
         return zona;
@@ -39,6 +59,6 @@ abstract class Nekretnina {
     public String toString() {
         return String.format("Podaci o nekretnini%n*******************************%n" +
                         "Adresa: %s%nZona: %s%nKvadratura: %.2f m2%n*******************************%n",
-                getAdresa(), getZona().getNazivZone(), getKvadratura(), getVlasnik()) + vlasnik;
+                getAdresa(), getZona().getNazivZone(), getKvadratura())+vlasnik;
     }
 }
