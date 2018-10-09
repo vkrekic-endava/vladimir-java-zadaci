@@ -10,7 +10,7 @@ import java.util.*;
 
 class IOmetode {
     private static IOmetode ourInstance = new IOmetode();
-    private static Scanner scanner = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);
 
     public static IOmetode getInstance() {
         return ourInstance;
@@ -26,7 +26,7 @@ class IOmetode {
      */
     public void formirajSpisak() {
         scanner = new Scanner(System.in);
-        ArrayList<Student> spisak = new ArrayList<>();
+        List<Student> spisak = new ArrayList<>();
 
         while (true) {
 
@@ -39,7 +39,8 @@ class IOmetode {
             Student student = new Student(ime, prezime, brojPoena);
             spisak.add(student);
 
-            System.out.println("Zelite li da sacuvate uneto ('d/D' za DA, ostali tasteri za nastavak unosa)");
+            System.out.println("Zelite li da sacuvate spisak ili da nastavite sa unosom studenata%n" +
+                    "('d/D' za cuvanje spisla, ostali tasteri za nastavak unosa studenata)");
             String izbor = scanner.next();
             if (izbor.equalsIgnoreCase("d")) {
                 sortirajSpisak(spisak);
@@ -54,14 +55,15 @@ class IOmetode {
      * Cuva sortiranu listu u txt fajlu ocene.txt     *
      * @param list Lista studenata
      */
-    private void sacuvaj(ArrayList<Student> list) {
+    private void sacuvaj(List<Student> list) {
         try (FileWriter fileWriter = new FileWriter("ocene.txt")) {
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             for (Student student: list){
-                bufferedWriter.write(student.toString());
+                bufferedWriter.write(student.prikazStudenta());
             }
             bufferedWriter.flush();
             bufferedWriter.close();
+            System.out.println("Lista sacuvana u fajlu C:\\Users\\Vladimir.Krekic\\Metropoliten\\vladimir-java-zadaci\\ocene.txt");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -116,5 +118,6 @@ class IOmetode {
                 .reversed()
                 .thenComparing(Student::getPrezimeStudenta)
                 .thenComparing(Student::getImeStudenta));
+
     }
 }

@@ -13,7 +13,13 @@ class Student {
     private int ocena;
 
     public Student(String imeStudenta, String prezimeStudenta, int brojPoena) {
-        this.imeStudenta = imeStudenta;
+        // dodaj za prvo veliko slovo
+        //ovo mora u metodu da bih ga vracao dok god ne pogodi
+        if(imeStudenta.matches("[a-zA-Z']")){
+            this.imeStudenta = imeStudenta;
+        }else
+            this.imeStudenta = "Pogresno uneto ime";
+
         this.prezimeStudenta = prezimeStudenta;
         this.brojPoena = brojPoena;
         this.ocena = setOcena(brojPoena);
@@ -53,8 +59,7 @@ class Student {
         return (brojPoena-1)/10;
     }
 
-    @Override
-    public String toString() {
+    public String prikazStudenta() {
         return String.format("%s %s: poena %d, ocena %d%n",
                 getImeStudenta(), getPrezimeStudenta(), getBrojPoena(),getOcena());
     }
