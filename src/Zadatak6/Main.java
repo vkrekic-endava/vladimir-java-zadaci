@@ -25,17 +25,20 @@ class Main {
         Vlasnik prvi = new Vlasnik("Pera", "Peric", "0101970710589", "000056897");
         Vlasnik drugi = new Vlasnik("Mara", "Maric", "0202958746589", "002255225");
         Vlasnik neispravan = new Vlasnik("Mark0", "Mark0vic", "k234567890123", "12345678" );
+        Vlasnik saApostrofom = new Vlasnik("John", "O'Hara", "2101953710489", "123456789" );
 
         Nekretnina stan1 = new Stan("Prva ulica 1", Zona.ZONA1, 89, prvi, 9, 8);
         Nekretnina kuca1 = new Kuca("Drugi bulevar 44", Zona.ZONA3, 157, drugi, 150);
         Nekretnina stan2 = new Stan("Prva ulica 1", Zona.ZONA2, 89, prvi, 9, 8);
         Nekretnina kuca2 = new Kuca("Drugi bulevar 44", Zona.ZONA4, 157, drugi, 150);
         Nekretnina stan3 = new Stan("Milutina Milankovica 10", Zona.ZONA2, 55, neispravan, 12, 10);
+        Nekretnina kuca3 = new Kuca("Jove Jovanovica 77", Zona.ZONA3, 128, saApostrofom, 45);
 
         System.out.println(stan1);
         System.out.println(kuca1);
         System.out.println(stan2);
         System.out.println(kuca2);
         System.out.println(stan3);
+        System.out.println(kuca3);
     }
 }

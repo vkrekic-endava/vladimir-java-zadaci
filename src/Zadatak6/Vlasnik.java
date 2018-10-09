@@ -17,19 +17,19 @@ class Vlasnik {
     private String brojLicneKarte;
 
     public Vlasnik(String imeVlasnika, String prezimeVlasnika, String jmbg, String brojLicneKarte) {
-        if(checkIme(imeVlasnika)){
+        if(imeVlasnika.matches("[a-zA-Z]+")){
             this.imeVlasnika = imeVlasnika;
         }else
             this.imeVlasnika = "Neispravno ime vlasnika";
-        if(checkIme(prezimeVlasnika)){
+        if(prezimeVlasnika.matches("[a-zA-Z']+")){
             this.prezimeVlasnika = prezimeVlasnika;
         }else
             this.prezimeVlasnika = "Neispravno prezime vlasnika";
-        if(checkJmbgLK(jmbg, 13)){
+        if(jmbg.matches("[0-9]+") && jmbg.length()==13){
             this.jmbg = jmbg;
         }else
             this.jmbg = "Neispravan maticni broj";
-        if(checkJmbgLK(brojLicneKarte, 9)){
+        if(brojLicneKarte.matches("[0-9]+") && brojLicneKarte.length()==9){
             this.brojLicneKarte = brojLicneKarte;
         }else
             this.brojLicneKarte = "Neispravan broj licne karte";
@@ -53,29 +53,6 @@ class Vlasnik {
 
     public String getJmbg() {
         return jmbg;
-    }
-
-    /**
-     * Proverava ispravnost ubetog JMBG i broja licne karte
-     * @param ime String koji sadrzi samo slova
-     * @return boolean
-     */
-    private boolean checkIme(String ime){
-        Pattern pattern = Pattern.compile("[a-zA-Z]+");
-        Matcher matcher = pattern.matcher(ime);
-        return matcher.matches();
-    }
-
-    /**
-     * Proverava ispravnost ubetog JMBG i broja licne karte
-     * @param broj String koji predstavlja JMBG ili broj licne karte i sastoji se od cifara
-     * @param duzina 13 za JMBG odnosno 9 za broj licne karte
-     * @return boolean
-     */
-    private boolean checkJmbgLK(String broj, int duzina){
-        Pattern pattern = Pattern.compile("[0-9]+");
-        Matcher matcher = pattern.matcher(broj);
-        return matcher.matches() && broj.length() == duzina;
     }
 
     public String getBrojLicneKarte() {
