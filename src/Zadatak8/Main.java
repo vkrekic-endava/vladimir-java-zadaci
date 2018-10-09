@@ -1,3 +1,5 @@
+package Zadatak8;
+
 /**
  * ZADATAK8: Napisati program koji opisuje sledeći scenario:
  * Firma se bavi preprodajom prehrambenih proizvoda. Proizvode razlikujemo po sledećim kategorijama proizvoda:

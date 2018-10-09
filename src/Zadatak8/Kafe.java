@@ -1,3 +1,5 @@
+package Zadatak8;
+
 import java.time.LocalDate;
 
 /**
@@ -38,6 +40,6 @@ class Kafe extends KafeSokovi{
 
     @Override
     public String toString() {
-        return super.toString()+String.format("Oblik = %s", getOblik());
+        return super.toString()+String.format("Oblik = %s", getOblik().getOblik());
     }
 }
