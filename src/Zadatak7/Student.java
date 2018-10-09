@@ -5,7 +5,7 @@ package Zadatak7;
  * @author Vladimir Krekic
  */
 
-class Student implements Comparable<Student>{
+class Student {
 
     private String imeStudenta;
     private String prezimeStudenta;
@@ -59,8 +59,4 @@ class Student implements Comparable<Student>{
                 getImeStudenta(), getPrezimeStudenta(), getBrojPoena(),getOcena());
     }
 
-    @Override
-    public int compareTo(Student student) {
-        return student.getBrojPoena()-this.getBrojPoena();
-    }
 }
