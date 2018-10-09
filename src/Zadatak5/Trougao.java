@@ -37,7 +37,7 @@ class Trougao extends GeometrijskaSlika {
      */
     @Override
     public double povrsina(){
-        return getStranica()*Math.sqrt(3)/4;
+        return getStranica()*getStranica()*Math.sqrt(3)/4;
     }
 
     @Override
