@@ -11,6 +11,7 @@ class NejednakostranicniTrougao extends Trougao{
     private double stranicaB;
     private double stranicaC;
     private static final String NAZIV = "Nejednakostranicni trougao";
+    private static boolean ispravanUnos;
 
     public NejednakostranicniTrougao() {
     }
@@ -22,8 +23,7 @@ class NejednakostranicniTrougao extends Trougao{
             this.stranicaC = stranicaC;
         }else{
             System.out.println("Neispravni parametri. Zbir duzina bilo koje dve stranice mora biti veci od duzine trece stranice.");
-            this.stranicaB = -1;
-            this.stranicaC = -1;
+            ispravanUnos = false;
         }
 
 
@@ -59,9 +59,10 @@ class NejednakostranicniTrougao extends Trougao{
 
     @Override
     public double obim() {
-        if(stranicaB<0)
-            return -1;
-        return getStranica()+ getStranicaB()+ getStranicaC();
+        if(ispravanUnos)
+            return getStranica()+ getStranicaB()+ getStranicaC();
+        ispravanUnos = true;
+        return Math.sqrt(-1);
     }
 
     /**
@@ -71,10 +72,12 @@ class NejednakostranicniTrougao extends Trougao{
      */
     @Override
     public double povrsina() {
-        if(stranicaB<0)
-            return -1;
-        double poluObim = obim()/2;
-        return Math.sqrt(poluObim*(poluObim-getStranica())*(poluObim-getStranicaB())*(poluObim-getStranicaC()));
+        if(ispravanUnos){
+            double poluObim = obim()/2;
+            return Math.sqrt(poluObim*(poluObim-getStranica())
+                    *(poluObim-getStranicaB())*(poluObim-getStranicaC()));
+        }
+        return Math.sqrt(-1);
     }
 
     @Override

@@ -26,10 +26,16 @@ class Trougao extends GeometrijskaSlika {
         this.stranica = stranica;
     }
 
+    @Override
     public double obim(){
         return getStranica()*3;
     }
 
+    /**
+     * Povrsina jednakostranicnog trougla P = stranica^2 * sqrt(3)/4
+     * @return double
+     */
+    @Override
     public double povrsina(){
         return getStranica()*Math.sqrt(3)/4;
     }

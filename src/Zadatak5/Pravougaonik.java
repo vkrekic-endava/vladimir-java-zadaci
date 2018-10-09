@@ -29,7 +29,7 @@ class Pravougaonik extends Kvadrat{
 
     @Override
     public double obim() {
-        return 2* getStranicaB()+2*getStranica();
+        return 2*(getStranicaB()+getStranica());
     }
 
     @Override

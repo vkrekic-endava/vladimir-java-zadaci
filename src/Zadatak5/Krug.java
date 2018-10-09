@@ -26,10 +26,12 @@ class Krug extends GeometrijskaSlika{
         this.poluprecnik = poluprecnik;
     }
 
+    @Override
     public double obim(){
         return getPoluprecnik()*2*Math.PI;
     }
 
+    @Override
     public double povrsina(){
         return Math.pow(getPoluprecnik(), 2)*Math.PI;
     }

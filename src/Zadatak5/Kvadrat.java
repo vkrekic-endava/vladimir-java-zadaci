@@ -26,10 +26,12 @@ class Kvadrat extends GeometrijskaSlika{
         this.stranica = stranica;
     }
 
+    @Override
     public double obim(){
         return 4*getStranica();
     }
 
+    @Override
     public double povrsina(){
         return getStranica()*getStranica();
     }
