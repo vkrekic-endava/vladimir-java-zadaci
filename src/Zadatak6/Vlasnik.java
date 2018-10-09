@@ -1,8 +1,5 @@
 package Zadatak6;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 /**
  * Zadatak 6
  *
