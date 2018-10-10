@@ -15,7 +15,7 @@ class Main {
 
     public static void main(String[] args) {
 
-        IOmetode io = IOmetode.getInstance();
+        ObradaZahteva io = ObradaZahteva.getInstance();
         io.formirajSpisak();
     }
 }

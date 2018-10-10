@@ -13,13 +13,7 @@ class Student {
     private int ocena;
 
     public Student(String imeStudenta, String prezimeStudenta, int brojPoena) {
-        // dodaj za prvo veliko slovo
-        //ovo mora u metodu da bih ga vracao dok god ne pogodi
-        if(imeStudenta.matches("[a-zA-Z']")){
-            this.imeStudenta = imeStudenta;
-        }else
-            this.imeStudenta = "Pogresno uneto ime";
-
+        this.imeStudenta = imeStudenta;
         this.prezimeStudenta = prezimeStudenta;
         this.brojPoena = brojPoena;
         this.ocena = setOcena(brojPoena);
@@ -56,7 +50,7 @@ class Student {
     public int setOcena(int brojPoena) {
         if(brojPoena<51)
             return 5;
-        return (brojPoena-1)/10;
+        return (brojPoena-1)/10+1;
     }
 
     public String prikazStudenta() {

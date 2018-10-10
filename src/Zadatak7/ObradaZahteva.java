@@ -8,15 +8,15 @@ import java.util.*;
  * @author Vladimir Krekic
  */
 
-class IOmetode {
-    private static IOmetode ourInstance = new IOmetode();
+class ObradaZahteva {
+    private static ObradaZahteva ourInstance = new ObradaZahteva();
     private Scanner scanner = new Scanner(System.in);
 
-    public static IOmetode getInstance() {
+    public static ObradaZahteva getInstance() {
         return ourInstance;
     }
 
-    private IOmetode() {
+    private ObradaZahteva() {
     }
 
     /**
@@ -86,7 +86,7 @@ class IOmetode {
                 scanner.nextLine();
             }
         }while (true);
-        return ime;
+        return ime.replaceAll("^[a-z]", ime.substring(0,1).toUpperCase());
     }
 
     /**
