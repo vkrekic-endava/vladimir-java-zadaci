@@ -40,7 +40,7 @@ class ObradaZahteva {
             spisak.add(student);
 
             System.out.println("Zelite li da sacuvate spisak ili da nastavite sa unosom studenata%n" +
-                    "('d/D' za cuvanje spisla, ostali tasteri za nastavak unosa studenata)");
+                    "('d/D' za cuvanje spiska, ostali tasteri za nastavak unosa studenata)");
             String izbor = scanner.next();
             if (izbor.equalsIgnoreCase("d")) {
                 sortirajSpisak(spisak);
@@ -65,7 +65,7 @@ class ObradaZahteva {
             bufferedWriter.close();
             System.out.println("Lista sacuvana u fajlu \\vladimir-java-zadaci\\ocene.txt");
         } catch (IOException e) {
-            System.out.println(e.getStackTrace());;
+            System.out.println(e.getStackTrace());
         }
     }
 
@@ -79,14 +79,24 @@ class ObradaZahteva {
         do{
             try{
                 System.out.printf("Upisite %s studenta:%n", poruka);
-                ime = scanner.next("[a-zA-Z']+");
-                break;
+                ime = scanner.nextLine();
+                if(ime.matches("[a-zA-Z'\\s]+")) {
+                    scanner.reset();
+                    break;
+                }
+                throw new InputMismatchException();
             }catch (InputMismatchException e){
                 System.out.printf("Pogresno uneto %s studenta. Molimo Vas pokusajte ponovo.%n", poruka);
-                scanner.nextLine();
+                scanner.reset();
             }
         }while (true);
-        return ime.replaceAll("^[a-z]", ime.substring(0,1).toUpperCase());
+//        if(ime.contains(" ")) {
+            ime = ime.replaceAll("^[a-z\\s]", ime.substring(ime.indexOf(" ")+1, ime.indexOf(" ") + 2).toUpperCase());
+            System.out.println(ime);
+        System.out.println(ime.substring(ime.indexOf(" ")+1, ime.indexOf(" ") + 2).toUpperCase());
+//        }
+        ime = ime.replaceAll("^[a-z]", ime.substring(0,1).toUpperCase());
+        return ime;
     }
 
     /**
