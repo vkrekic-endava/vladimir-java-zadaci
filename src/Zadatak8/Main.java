@@ -13,18 +13,21 @@ package Zadatak8;
  * Kod mesa čuvamo od koje životinje je meso.
  * Kod cene mlečnih proizvoda i sokova PDV je 20%, dok je za meso i kafu PDV na cenu 8%
  * Firma ima polje kapital, listu proizvoda i metodu porudzbina() koja izračuna, proverava da li
- * ima dovoljno sredstava za porudzbinu na osnovu liste proizvoda. Nakon uspešne porudžbine lista ostaje prazna.
+ * ima dovoljno sredstava za porudzbinu na osnovu liste proizvoda. Nakon uspešne porudžbine spisak ostaje prazna.
  */
 
-
 import java.time.LocalDate;
-import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Vladimir Krekic
  */
 
 class Main {
+
+    private static final String ZVEZDICE = "***********************************************************************************";
+    private static final String PRVO_STAMPANJE = "Spisak proizvoda sa kolicinama";
+    private static final String NAKON_PORUDZBINE = "Spisak proizvoda sa kolicinama nakon porudzbine";
 
     public static void main(String[] args) {
 
@@ -45,41 +48,37 @@ class Main {
         LocalDate localDate7 = LocalDate.of(2021, 6,29);
         Proizvod proizvod7 = new Meso("Big Bull", 356.5, localDate7, Pdv.MESO_KAFE, "Govedina");
 
-        firma.lista = new HashMap<>();
-        firma.lista.put(proizvod1, 55);
-        firma.lista.put(proizvod2, 85);
-        firma.lista.put(proizvod3, 155);
-        firma.lista.put(proizvod4, 505);
-        firma.lista.put(proizvod5, 68);
-        firma.lista.put(proizvod6, 11);
-        firma.lista.put(proizvod7, 22);
+        firma.getSpisak().put(proizvod1, 55);
+        firma.getSpisak().put(proizvod2, 85);
+        firma.getSpisak().put(proizvod3, 155);
+        firma.getSpisak().put(proizvod4, 505);
+        firma.getSpisak().put(proizvod5, 68);
+        firma.getSpisak().put(proizvod6, 11);
+        firma.getSpisak().put(proizvod7, 22);
 
+        System.out.println(ZVEZDICE);
         System.out.println(firma);
-        System.out.println("***********************************************************************************");
-        System.out.println("Spisak proizvoda sa kolicinama");
-        System.out.println("***********************************************************************************");
-        firma.lista.forEach((k,v)->
-                System.out.println(k + "........Kolicina: " + v));
-        System.out.println("***********************************************************************************");
+        System.out.println(ZVEZDICE);
+
+        stampanje(PRVO_STAMPANJE, firma.getSpisak());
 
         System.out.printf("Pokusaj skidanja %d komada %s %s%n", 32, proizvod1.getImeProizvoda(), ((Sokovi) proizvod1).getSirovina());
-        firma.porudzbina(firma.lista, proizvod1, 32);
+        firma.porudzbina(firma.getSpisak(), proizvod1, 32);
 
-        System.out.println("Spisak proizvoda sa kolicinama nakon porudzbine");
-        System.out.println("***********************************************************************************");
-        firma.lista.forEach((k,v)->
-                System.out.println(k + "........Kolicina: " + v));
-        System.out.println("***********************************************************************************");
+        stampanje(NAKON_PORUDZBINE, firma.getSpisak());
 
         System.out.printf("Pokusaj skidanja %d komada %s %s%n", 42, proizvod1.getImeProizvoda(), ((Sokovi) proizvod1).getSirovina());
-        firma.porudzbina(firma.lista, proizvod1, 42);
+        firma.porudzbina(firma.getSpisak(), proizvod1, 42);
 
-        System.out.println("Spisak proizvoda sa kolicinama nakon porudzbine");
-        System.out.println("***********************************************************************************");
-        firma.lista.forEach((k,v)->
-                System.out.println(k + "........Kolicina: " + v));
-        System.out.println("***********************************************************************************");
+        stampanje(NAKON_PORUDZBINE, firma.getSpisak());
+    }
 
+    private static void stampanje(String poruke, Map<Proizvod, Integer> spisak){
+        System.out.println(poruke);
+        System.out.println(ZVEZDICE);
+        spisak.forEach((k, v)->
+                System.out.println(k.zaStampanje() + "........Kolicina: " + v));
+        System.out.println(ZVEZDICE);
     }
 
 

@@ -1,18 +1,17 @@
 package Zadatak8;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
  * @author Vladimir Krekic
  */
 
-
-
 class Firma {
 
     private String nazivFirme;
     private double kapital;
-    public Map<Proizvod, Integer> lista;
+    private Map<Proizvod, Integer> spisak = new HashMap<>();
 
     public Firma(String nazivFirme, double kapital) {
         this.nazivFirme = nazivFirme;
@@ -35,12 +34,12 @@ class Firma {
         this.kapital = kapital;
     }
 
-    public Map<Proizvod, Integer> getLista() {
-        return lista;
+    public Map<Proizvod, Integer> getSpisak() {
+        return spisak;
     }
 
-    public static void setLista(Map<Proizvod, Integer> lista) {
-        lista = lista;
+    public void setLista(Map<Proizvod, Integer> spisak) {
+        this.spisak = spisak;
     }
 
     @Override
@@ -51,13 +50,14 @@ class Firma {
 
     /**
      * izračuna, proverava da li ima dovoljno sredstava za porudzbinu na osnovu liste proizvoda.
-     * Nakon uspešne porudžbine lista ostaje prazna.
+     * Nakon uspešne porudžbine spisak ostaje prazna.
      */
-    public Map<Proizvod, Integer> porudzbina(Map<Proizvod, Integer> lista, Proizvod proizvod, int kolicina){
-        if(lista.containsKey(proizvod) && lista.get(proizvod)>=kolicina){
-            lista.replace(proizvod, lista.get(proizvod), lista.get(proizvod)-kolicina);
+    public Map<Proizvod, Integer> porudzbina(Map<Proizvod, Integer> spisak, Proizvod proizvod, int kolicina){
+        if(spisak.containsKey(proizvod) && spisak.get(proizvod)>=kolicina){
+            spisak.replace(proizvod, spisak.get(proizvod), spisak.get(proizvod)-kolicina);
+            System.out.printf("Uspesna porudzbina. Vrednost porudzbine %.2f%n", proizvod.getCenaProizvoda()*kolicina);
         }else
-            System.out.println("Nema dovoljno proizvoda na lageru.");
-        return lista;
+            System.out.println("Neuspesna porudzbina. Nema dovoljno proizvoda na lageru.");
+        return spisak;
     }
 }

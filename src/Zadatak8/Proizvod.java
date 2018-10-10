@@ -74,8 +74,7 @@ class Proizvod {
         this.pdv = pdv;
     }
 
-    @Override
-    public String toString() {
+    public String zaStampanje(){
         return String.format("Naziv = %s, cena = %.2f din Rok trajanja = %s PDV = %s ",
                 getImeProizvoda(), getCenaProizvoda(), getRokTrajanja().toString(), getPdv().getPdvNaziv());
     }

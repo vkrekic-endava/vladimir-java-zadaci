@@ -12,7 +12,7 @@ class KafeSokovi extends Proizvod{
     }
 
     @Override
-    public String toString() {
-        return super.toString();
+    public String zaStampanje() {
+        return super.zaStampanje();
     }
 }

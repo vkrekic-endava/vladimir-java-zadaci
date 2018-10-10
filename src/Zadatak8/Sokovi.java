@@ -24,7 +24,7 @@ class Sokovi extends KafeSokovi{
     }
 
     @Override
-    public String toString() {
-        return super.toString()+String.format("Sirovina = %s", getSirovina());
+    public String zaStampanje() {
+        return super.zaStampanje()+String.format("Sirovina = %s", getSirovina());
     }
 }

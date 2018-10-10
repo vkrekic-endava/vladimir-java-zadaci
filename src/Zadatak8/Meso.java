@@ -24,7 +24,9 @@ class Meso extends Proizvod{
     }
 
     @Override
-    public String toString() {
-        return super.toString()+String.format("Vrsta = %s", getVrsta());
+    public String zaStampanje() {
+        return super.zaStampanje()+String.format("Vrsta = %s", getVrsta());
     }
 }
+
+

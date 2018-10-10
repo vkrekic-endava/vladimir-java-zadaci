@@ -39,7 +39,7 @@ class Kafe extends KafeSokovi{
     }
 
     @Override
-    public String toString() {
-        return super.toString()+String.format("Oblik = %s", getOblik().getOblik());
+    public String zaStampanje() {
+        return super.zaStampanje()+String.format("Oblik = %s", getOblik().getOblik());
     }
 }

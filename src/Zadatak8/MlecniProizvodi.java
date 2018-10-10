@@ -24,7 +24,7 @@ class MlecniProizvodi extends Proizvod{
     }
 
     @Override
-    public String toString() {
-        return super.toString()+String.format("Poreklo proizvoda = %s", getPorekloProizvoda());
+    public String zaStampanje() {
+        return super.zaStampanje()+String.format("Poreklo proizvoda = %s", getPorekloProizvoda());
     }
 }
