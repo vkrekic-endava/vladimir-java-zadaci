@@ -15,7 +15,7 @@ class Main {
 
     public static void main(String[] args) {
 
-        ObradaZahteva io = ObradaZahteva.getInstance();
-        io.formirajSpisak();
+        ObradaZahteva obradaZahteva = ObradaZahteva.getInstance();
+        obradaZahteva.formirajSpisak();
     }
 }

@@ -63,9 +63,9 @@ class ObradaZahteva {
             }
             bufferedWriter.flush();
             bufferedWriter.close();
-            System.out.println("Lista sacuvana u fajlu C:\\Users\\Vladimir.Krekic\\Metropoliten\\vladimir-java-zadaci\\ocene.txt");
+            System.out.println("Lista sacuvana u fajlu \\vladimir-java-zadaci\\ocene.txt");
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getStackTrace());;
         }
     }
 
@@ -79,7 +79,7 @@ class ObradaZahteva {
         do{
             try{
                 System.out.printf("Upisite %s studenta:%n", poruka);
-                ime = scanner.next("[a-zA-Z]+");
+                ime = scanner.next("[a-zA-Z']+");
                 break;
             }catch (InputMismatchException e){
                 System.out.printf("Pogresno uneto %s studenta. Molimo Vas pokusajte ponovo.%n", poruka);
@@ -102,9 +102,9 @@ class ObradaZahteva {
                 if(brojPoena>=0 && brojPoena<=100)
                     break;
             }catch (InputMismatchException e){
+                System.out.println("Pogresno unet broj poena. Samo celi brojevi 0-100)");
+                scanner.nextLine();
             }
-            System.out.println("Pogresno unet broj poena. Samo celi brojevi 0-100)");
-            scanner.nextLine();
         }while (true);
         return brojPoena;
     }
