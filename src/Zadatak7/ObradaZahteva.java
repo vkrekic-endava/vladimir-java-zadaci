@@ -101,8 +101,9 @@ class ObradaZahteva {
                 brojPoena = scanner.nextInt();
                 if(brojPoena>=0 && brojPoena<=100)
                     break;
+                throw new InputMismatchException();
             }catch (InputMismatchException e){
-                System.out.println("Pogresno unet broj poena. Samo celi brojevi 0-100)");
+                System.out.println("Pogresno unet broj poena. (Samo celi brojevi 0-100)");
                 scanner.nextLine();
             }
         }while (true);
