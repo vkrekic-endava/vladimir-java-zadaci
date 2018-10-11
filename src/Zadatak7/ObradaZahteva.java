@@ -56,14 +56,15 @@ class ObradaZahteva {
      * @param list Lista studenata
      */
     private void sacuvaj(List<Student> list) {
-        try (FileWriter fileWriter = new FileWriter("ocene.txt")) {
+        File file = new File("ocene.txt");
+        try (FileWriter fileWriter = new FileWriter(file)) {
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             for (Student student: list){
                 bufferedWriter.write(student.prikazStudenta());
             }
             bufferedWriter.flush();
             bufferedWriter.close();
-            System.out.println("Lista sacuvana u fajlu \\vladimir-java-zadaci\\ocene.txt");
+            System.out.println("Lista sacuvana u fajlu " + file.getCanonicalPath());
         } catch (IOException e) {
             System.out.println(e.getStackTrace());
         }
