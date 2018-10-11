@@ -71,6 +71,7 @@ class ObradaZahteva {
 
     /**
      * Unosi ime ili prezime i proverava da se sastoji samo od slova
+     * Menja pocetna mala slova u velika
      * @param poruka "ime" ili "prezima"
      * @return String za ime ili prezime
      */
@@ -90,12 +91,11 @@ class ObradaZahteva {
                 scanner.reset();
             }
         }while (true);
-//        if(ime.contains(" ")) {
-            ime = ime.replaceAll("^[a-z\\s]", ime.substring(ime.indexOf(" ")+1, ime.indexOf(" ") + 2).toUpperCase());
-            System.out.println(ime);
-        System.out.println(ime.substring(ime.indexOf(" ")+1, ime.indexOf(" ") + 2).toUpperCase());
-//        }
-        ime = ime.replaceAll("^[a-z]", ime.substring(0,1).toUpperCase());
+        if(ime.contains(" ")) {
+            String[] imeNiz = ime.split(" ");
+            ime = Character.toUpperCase(imeNiz[0].charAt(0)) + imeNiz[0].substring(1) + " "
+                    + Character.toUpperCase(imeNiz[1].charAt(0)) + imeNiz[1].substring(1);
+        }else ime = Character.toUpperCase(ime.charAt(0)) + ime.substring(1);
         return ime;
     }
 
